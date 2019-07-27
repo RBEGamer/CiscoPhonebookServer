@@ -1,4 +1,4 @@
-# cisco_phonebook_server
+<img src="/documentation/logo.png" />
  A xml service for cisco ip phone to provide a dynamic phonebook from a vcf file
 
 
