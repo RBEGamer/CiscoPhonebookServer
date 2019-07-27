@@ -3,8 +3,11 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # INSTALL TFTP SERVER
-RUN apt-get install xinetd tftpd tftp
-RUN mkdir /tftpboot
+RUN apt update && \
+    apt install tftp-hpa && \
+    rm -rf /tmp/* && \
+    mkdir -p /tftpboot
+
 RUN chmod -R 777 /tftpboot
 RUN chown -R nobody /tftpboot
 
