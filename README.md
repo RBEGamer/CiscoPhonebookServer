@@ -7,7 +7,7 @@ This service generates a `direcotry.xml` file used for cisco phone to show a pho
 If you want to use the cisco phone with the SIP firmaware and with your own sip gateway like a Fritz!Box.
 There is no build in way to access a phonebook on the phone. The idea was to generate such XML from a normal VCF File which can exported from iCloud for example and provide these contacts to your cisco phones
 
-<img src="/documentation/pbook.JPG" />
+<img src="/documentation/pbook.JPG" width="1024" />
 
 
 # VCF
@@ -20,7 +20,7 @@ To provide configuration data for your phone, you have to setup an TFTP-Server.
 The docker image already contains a TFTP-Server which is already setup.
 Setup the TFTP-Server URL in the phones newtwork settings.
 
-<img src="/documentation/tftp.JPG" />
+<img src="/documentation/tftp.JPG" width="1024"/>
 
 The Configuration files need a specific name :
 `SEPA` followed by the Mac-Adress from the phone in uppercase `.xml`.
