@@ -18,7 +18,25 @@ To build the docker-image named `ciscophonebookgenerator` you can use the script
 
 
 # CONFIGURE YOUR CISCO PHONE
-To provide configuration data for your phone, you have to setup an TFTP-Server. 
+To provide configuration data for your phone, you have to setup an TFTP-Server.
+Setup the TFTP-Server URL in the phones newtwork settings.
+The Configuration files need a specific name :
+`SEPA` followed by the Mac-Adress from the phone in uppercase `.xml`.
+An example file can be found in the `/src/tftp/` directoy.
 
-
+After you setup the config file to your needs, you have to edit the line:
 `<directoryURL>http://URL_TO_SERVICE:3012/cisco/menu.xml</directoryURL>`
+This says the phone where it can found this phonebook service.
+
+Or you can setup a shortcut button to open the Phonebook by using:
+
+```
+<line button="2"> 
+     	<featureID>20</featureID> 
+     	<featureLabel>Telefonbuch</featureLabel> 
+     	<serviceURI>http://192.168.1.2:3012/cisco/menu.xml</serviceURI> 
+  	</line> 
+
+```
+
+
