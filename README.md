@@ -1,5 +1,5 @@
 # cisco_phonebook_server
- aA xml service for cisco ip phone to provide a dynamic phonebook from a vcf file
+ A xml service for cisco ip phone to provide a dynamic phonebook from a vcf file
 
 # FEATURES
 This service generates a `direcotry.xml` file used for cisco phone to show a phonebook.
