@@ -16,7 +16,8 @@ Place a vfc file named `contact_export.vcf` in the `/src/phbook/contact_export.v
 # BUILDING THE DOCKER IMAGE
 To build the docker-image named `ciscophonebookgenerator` you can use the script `/src/phbook/build_image.sh`.
 
-
+Run the Docker-Image by using:
+`docker run -itd -p 3012:3012 --name ciscophonebookgenerator ciscophonebookgenerator`
 # CONFIGURE YOUR CISCO PHONE
 To provide configuration data for your phone, you have to setup an TFTP-Server.
 Setup the TFTP-Server URL in the phones newtwork settings.
