@@ -36,7 +36,7 @@ This says the phone where it can found this phonebook service.
 Or you can setup a shortcut button to open the Phonebook by using:
 
 ```
-<line button="2"> 
+   <line button="2"> 
      	<featureID>20</featureID> 
      	<featureLabel>Telefonbuch</featureLabel> 
      	<serviceURI>http://192.168.1.2:3012/cisco/menu.xml</serviceURI> 
