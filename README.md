@@ -39,11 +39,12 @@ Or you can setup a shortcut button to open the Phonebook by using:
    <line button="2"> 
      	<featureID>20</featureID> 
      	<featureLabel>Telefonbuch</featureLabel> 
-     	<serviceURI>http://192.168.1.2:3012/cisco/menu.xml</serviceURI> 
+     	<serviceURI>http://URL_TO_SERVICE:3012/cisco/menu.xml</serviceURI> 
   	</line> 
 
 ```
 
+## REPLACE `URL_TO_SERVICE` with the external IP of your docker container
 # BUILDING THE DOCKER IMAGE
 To build the docker-image named `ciscophonebookgenerator` you can use the script `/src/phbook/build_image.sh`.
 
