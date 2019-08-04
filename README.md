@@ -1,4 +1,5 @@
-<img src="/documentation/logo.png" />
+
+![Gopher image](/documentation/logo.png)
  A xml service for cisco ip phone to provide a dynamic phonebook from a vcf file
 
 
