@@ -31,7 +31,9 @@ So simply edit them.
 
 
 After you setup the config file to your needs, you have to edit the line:
-`<directoryURL>http://URL_TO_SERVICE:3012/cisco/menu.xml</directoryURL>`
+```xml
+<directoryURL>http://URL_TO_SERVICE:3012/cisco/menu.xml</directoryURL>
+```
 This says the phone where it can found this phonebook service.
 
 Or you can setup a shortcut button to open the Phonebook by using:
