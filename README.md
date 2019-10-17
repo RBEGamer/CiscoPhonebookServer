@@ -36,7 +36,7 @@ This says the phone where it can found this phonebook service.
 
 Or you can setup a shortcut button to open the Phonebook by using:
 
-```
+```xml
    <line button="2"> 
      	<featureID>20</featureID> 
      	<featureLabel>Telefonbuch</featureLabel> 
