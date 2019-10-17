@@ -50,7 +50,9 @@ Or you can setup a shortcut button to open the Phonebook by using:
 To build the docker-image named `ciscophonebookgenerator` you can use the script `/src/phbook/build_image.sh`.
 
 Run the Docker-Image by using:
-`docker run -itd -p 3012:3012 -p 69:69 --name ciscophonebookgenerator ciscophonebookgenerator`
+```
+$ docker run -itd -p 3012:3012 -p 69:69 --name ciscophonebookgenerator ciscophonebookgenerator
+```
 
 
 
