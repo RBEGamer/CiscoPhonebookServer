@@ -5,7 +5,7 @@ var json2xml = require('json2xml');
 
 var path = require('path');
 
-var container_addr = "192.168.1.2";
+var container_addr = "192.168.178.45";
 var container_port = "3012";
 var fs = require('fs');
 var cards = null;
