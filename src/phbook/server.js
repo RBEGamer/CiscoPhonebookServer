@@ -5,7 +5,7 @@ var json2xml = require('json2xml');
 
 var path = require('path');
 
-var container_addr = "192.168.178.45";
+var container_addr = "192.168.178.4";
 var container_port = "3012";
 var fs = require('fs');
 var cards = null;
@@ -113,7 +113,7 @@ app.get('/cisco/menu.xml', function (req, res) {
     tmpa.push({ Title: "iCloud-Adressbuch", "Prompt": "---" });
     for (let index = 0; index < fin.length; index++) {
         const element = fin[index];
-        tmpa.push({ MenuItem: { Name: names[index], URL: "/cisco/book/" + index } });     
+        tmpa.push({ MenuItem: { Name: names[index], URL: "http://" + container_addr + ":" + container_port+"/cisco/book/" + index } });     
     }
    
 
