@@ -4,7 +4,7 @@ COPY package*.json ./
 
 # INSTALL TFTP SERVER
 RUN apt update && \
-    apt install tftp-hpa && \
+    apt-get install xinetd tftpd tftp -y && \
     rm -rf /tmp/* && \
     mkdir -p /tftpboot
 
@@ -19,6 +19,9 @@ COPY . .
 COPY ./tftp_conf /etc/xinetd.d/tftp
 
 COPY ./tftpboot/*.xml /tftpboot/
+
+RUN /etc/init.d/xinetd stop
+RUN /etc/init.d/xinetd start
 
 EXPOSE 3012
 EXPOSE 69
