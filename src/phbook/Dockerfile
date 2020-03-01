@@ -5,8 +5,9 @@ COPY package*.json ./
 # INSTALL TFTP SERVER
 RUN apt update && \
     apt-get install xinetd tftpd tftp -y && \
-    rm -rf /tmp/* && \
-    mkdir -p /tftpboot
+    rm -rf /tmp/*
+    
+RUN mkdir -p /tftpboot
 
 RUN chmod -R 777 /tftpboot
 RUN chown -R nobody /tftpboot
