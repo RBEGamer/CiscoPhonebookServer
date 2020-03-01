@@ -38,7 +38,7 @@ try {
             if (elementa[0] == 'tel') {
                 
                 if (elementa[3] != null){
-                    data.URL = String("Dial:"+elementa[3]).replace(" ", "").replace("+49","0"); //"Dial:"+
+                    data.URL = String("EditDial:"+elementa[3]).replace(" ", "").replace("+49","0"); //"Dial:"+
                     dt++;
                 }
                 
