@@ -18,7 +18,7 @@ COPY . .
 
 COPY ./tftp_conf /etc/xinetd.d/tftp
 
-COPY ./tftpboot/*.xml /tftpboot
+COPY ./tftpboot/*.xml /tftpboot/
 
 EXPOSE 3012
 EXPOSE 69
