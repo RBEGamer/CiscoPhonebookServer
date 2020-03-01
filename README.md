@@ -10,6 +10,8 @@ There is no build in way to access a phonebook on the phone. The idea was to gen
 
 <img src="/documentation/pbook.JPG" width="1024" />
 
+# SERVER SETUP
+Set on your host a staqtic ip and insert these in the `server.js` file in line 3.
 
 # VCF
 At startup the service need a vfc file with contacts that are will showed on the cisco ip phone.
@@ -24,8 +26,8 @@ Setup the TFTP-Server URL in the phones newtwork settings.
 <img src="/documentation/tftp.JPG" width="1024"/>
 
 The Configuration files need a specific name :
-`SEPA` followed by the Mac-Adress from the phone in uppercase `.xml`.
-An example file can be found in the `/src/pbook/tftpboot/` directoy.
+`SEP` followed by the Mac-Adress from the phone in uppercase `.cnf.xml`.
+An example file can be found in the `/src/pbook/tftpboot/` directoy ('/src/phbook/tftpboot/SEP_MACADDROFPHONE.cnf.xml').
 All files present in thits directory can be accessed by the Docker-Image TFTP-Server.
 So simply edit them.
 
