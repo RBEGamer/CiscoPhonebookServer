@@ -28,5 +28,7 @@ EXPOSE 3012
 EXPOSE 69
 
 RUN chmod -x ./entrypoint.sh
-CMD ./entrypoint.sh
-#CMD [ "npm", "start" ]
+
+ENTRYPOINT ["./entrypoint.sh"]
+
+CMD ["start"]
