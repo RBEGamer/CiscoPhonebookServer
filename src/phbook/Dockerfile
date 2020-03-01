@@ -31,4 +31,4 @@ EXPOSE 69
 
 #ENTRYPOINT ["./entrypoint.sh"]
 
-CMD ["npm start"]
+CMD ["npm" "start"]
