@@ -27,8 +27,8 @@ RUN /etc/init.d/xinetd start
 EXPOSE 3012
 EXPOSE 69
 
-RUN chmod -x ./entrypoint.sh
+#RUN chmod -x ./entrypoint.sh
 
-ENTRYPOINT ["./entrypoint.sh"]
+#ENTRYPOINT ["./entrypoint.sh"]
 
-CMD ["start"]
+CMD ["/etc/init.d/xinetd start; npm start]
