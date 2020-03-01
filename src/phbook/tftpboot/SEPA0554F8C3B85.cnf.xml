@@ -64,7 +64,7 @@
    <deviceSecurityMode>1</deviceSecurityMode>
    
  <authenticationURL></authenticationURL>  
-   <directoryURL>http://192.168.1.2:3012/cisco/menu.xml</directoryURL> <!-- wird nicht genutzt -->
+   <directoryURL>http://192.168.178.4:3012/cisco/menu.xml</directoryURL> <!-- wird nicht genutzt -->
    <idleURL></idleURL>
    <informationURL></informationURL>
 
