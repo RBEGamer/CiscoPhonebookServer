@@ -31,4 +31,4 @@ EXPOSE 69
 
 #ENTRYPOINT ["./entrypoint.sh"]
 
-CMD ["/etc/init.d/xinetd start && npm start"]
+CMD ["npm start"]
