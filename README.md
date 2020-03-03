@@ -58,5 +58,8 @@ Run the Docker-Image by using:
 $ docker run -itd -p 3012:3012 -p 69:69 --name ciscophonebookgenerator ciscophonebookgenerator
 ```
 
-
+# TODO
+* adding api for updating contacts
+* carddav integration
+* configuration page
 
