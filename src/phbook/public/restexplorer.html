@@ -1,0 +1,190 @@
+<html>
+
+<head>
+
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <style>
+        .key {
+            color: rgba(3, 161, 43, 0.74);
+        }
+
+        .boolean {
+            color: rgb(0, 81, 255);
+            font-weight: bold;
+        }
+
+        .string {
+            color: rgb(202, 4, 47);
+        }
+
+        .null {
+            color: rgb(2, 0, 0);
+            font-weight: bold;
+        }
+
+        .number {
+            color: rgb(0, 255, 21);
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <h1 class="text-center">API EXPLORER <b><span id="apiheadline"></span></b></h1>
+    <hr>
+
+    <h3>REST API ENDPOINTS</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">ENPOINT</th>
+                <th scope="col">METHOD</th>
+                <th scope="col">DESCRIPTION</th>
+                <th scope="col">TEST-CALL</th>
+            </tr>
+        </thead>
+        <tbody id="restapitablebody">
+        </tbody>
+    </table>
+
+
+
+    <h2>TEST RESPONSE</h2>
+
+    <pre style="overflow:scroll; height:400px;" id="test_response" class="prettyprint"></pre>
+    </code>
+
+    <script src="/js/propper.min.js"></script>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/js/bootstrap.min.js"></script>
+    <script src="/js/prettify.js"></script>
+
+
+    <script>
+
+
+
+        function syntaxHighlight(json) {
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+        }
+
+
+        function test_call(_url, param_obj) {
+            var parameters = [];
+            if (param_obj != null && param_obj != '') {
+                var unesc = unescape_questionmark(param_obj);
+                console.log(JSON.parse(unesc));
+                parameters = JSON.parse(unesc);
+            }
+            console.log(parameters);
+            //REPLACE :PARAMETER WITH THE VALUE FROM THE BOX
+            var url = String(_url);
+            if (parameters.length > 0) {
+                for (let index = 0; index < parameters.length; index++) {
+                    const parameter = parameters[index];
+                    url = url.replace(":" + parameter.name, String($("#" + parameter.id).val())); //REPLACE :id with Value
+                }
+            }
+            console.log(url);
+            //TODO DO THE REQUEST
+            $.get(_url, function (data) {
+                console.log(data);
+                var str = JSON.stringify(data, undefined, 4);
+                var strj = syntaxHighlight(str);
+                $("#test_response").html(strj);
+            });
+        }
+
+        escape_questionmark = function (str) {
+            return str.replace(/"/g, "?")
+        };
+        unescape_questionmark = function (str) {
+            return str.replace(/\?/g, "\"")
+        };
+
+        function generate_call_table() {
+            $.get('/listendpoints', function (data) {
+                var unique_counter = 0;
+                console.log(data);
+                var resstr = "";
+                var mstr = "";
+                document.title = data.api_name;
+                $("#apiheadline").html(data.api_name);
+                for (let index = 0; index < data.endpoints.length; index++) {
+                    const element = data.endpoints[index];
+                    resstr += "<tr>";
+                    resstr += "<th scope='row'>" + (index + 1) + "</th>";
+                    //ADD CALL
+                    resstr += "<td>" + element.path + "</td>";
+                    //ADD METHODS
+                    mstr = "";
+                    for (let mindex = 0; mindex < element.methods.length; mindex++) {
+                        mstr += element.methods[mindex];
+
+                    }
+                    resstr += "<td>" + mstr + "</td>";
+                    //ADD DESKTIOTION
+                    if (element.desc != undefined && element.desc != null) {
+                        resstr += "<td>" + element.desc + "</td>";
+                    } else {
+                        resstr += "<td>NO DESC</td>";
+                    }
+                    //ADD TEST BUTTON WITH PARAMETERS
+                    if (element.url_parameters.length > 0) {
+                        resstr += "<td>";
+                        resstr += "<table>";
+                        resstr += "<tr><th>KEY</th><th>VALUE</th></tr>";
+                        var param_reg = [];
+                        for (let paramtindex = 0; paramtindex < element.url_parameters.length; paramtindex++) {
+                            const param_element = element.url_parameters[paramtindex];
+                            unique_counter++;
+                            resstr += "<tr><td>" + param_element.name + "</td><td><input type='text' id='RI" + unique_counter + "' placeholder='" + param_element.name + "'></td></tr>";
+
+                            param_reg.push({ id: "RI" + unique_counter, name: param_element.name });
+                        }
+
+
+                        var sst = escape_questionmark(JSON.stringify({ param_reg: param_reg }));
+                        resstr += "</table>";
+                        resstr += "<button type=\"button\" class=\"btn btn-warning\" onclick=\"test_call('" + element.path + "','" + sst + "');\">TEST</button>"
+                        resstr += "</td>";
+                    } else {
+                        resstr += "<td><button type=\"button\" class=\"btn btn-warning\" onclick=\"test_call('" + element.path + "','');\">TEST</button></td>";
+                    }
+
+                    resstr += "</tr>";
+                }
+                $("#restapitablebody").html(resstr);
+            });
+        }
+
+        $(document).ready(function () {
+            generate_call_table()
+        });
+
+    </script>
+</body>
+
+
+</html>
